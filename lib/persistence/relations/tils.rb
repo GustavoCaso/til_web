@@ -6,6 +6,8 @@ module Persistence
         attribute :title, Types::Strict::String
         attribute :text, Types::Strict::String
         attribute :author_id, Types::ForeignKey(:authors)
+        attribute :created_at, Types::Date
+        attribute :updated_at, Types::Date
 
         associations do
           belongs_to :author

@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/dry-rb/dry-view
+  revision: ed909cd5234a40bc71e5f3eec8bb3d351df93845
+  branch: add_default_option_to_expose
+  specs:
+    dry-view (0.3.0)
+      dry-configurable (~> 0.1)
+      dry-core (~> 0.2)
+      dry-equalizer (~> 0.2)
+      tilt (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,11 +89,6 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.11.0)
-    dry-view (0.3.0)
-      dry-configurable (~> 0.1)
-      dry-core (~> 0.2)
-      dry-equalizer (~> 0.2)
-      tilt (~> 2.0)
     dry-web (0.7.0)
       dry-monitor
       dry-system (~> 0.5)
@@ -209,7 +215,7 @@ DEPENDENCIES
   dry-transaction (>= 0.10.0)
   dry-types
   dry-validation
-  dry-view (>= 0.3.0)
+  dry-view!
   dry-web (>= 0.7.0)
   dry-web-roda (>= 0.6.0)
   pg

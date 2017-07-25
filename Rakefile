@@ -15,6 +15,10 @@ def db
   TilWeb::Container["persistence.db"]
 end
 
+task :server do
+  system('bundle exec shotgun -p 3000 -o 0.0.0.0 config.ru')
+end
+
 namespace :db do
   task :setup do
     TilWeb::Container.boot :rom
