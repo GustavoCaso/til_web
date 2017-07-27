@@ -3,6 +3,7 @@
 
 # RSpec
 /spec/examples.txt
+/coverage
 
 # Logs
 /log/*.log

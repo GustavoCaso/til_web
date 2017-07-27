@@ -39,4 +39,6 @@ group :test do
   gem "poltergeist"
   gem "rspec"
   gem "rom-factory"
+  gem 'simplecov'
+  gem "codeclimate-test-reporter"
 end

@@ -1,5 +1,12 @@
 ENV["RACK_ENV"] = "test"
 
+if RUBY_ENGINE == "ruby"
+  require "simplecov"
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
+end
+
 require "pry-byebug"
 
 SPEC_ROOT = Pathname(__FILE__).dirname
