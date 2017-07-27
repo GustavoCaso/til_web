@@ -1,0 +1,17 @@
+language: ruby
+dist: trusty
+sudo: false
+cache: bundler
+before_script:
+ - cp .example.env-travis .env
+ - createdb til_web_test
+ - RACK_ENV=test bundle exec rake db:migrate
+script:
+ - bundle exec rake
+after_success:
+ - '[ -d coverage ] && bundle exec codeclimate-test-reporter'
+rvm:
+ - 2.4.1
+addons:
+ code_climate:
+   repo_token: f75e04e36994659e5f7ed512c2f2a432aeed0da9e8ccd6ce81a82c7eba4ab21e
