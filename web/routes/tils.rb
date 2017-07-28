@@ -23,5 +23,9 @@ class TilWeb::Application
     r.get 'new' do
       r.view 'tils.new'
     end
+
+    r.get ':id' do |id|
+      r.view 'tils.show', id: id
+    end
   end
 end

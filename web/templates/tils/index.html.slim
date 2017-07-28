@@ -2,5 +2,6 @@ h1 Tils
 
 - tils.each do |til|
   .article
-    h2 = til.title
+    h2
+      a href="tils/#{til.id}" = til.title
     p = til.text
