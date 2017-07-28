@@ -1,0 +1,18 @@
+h1 Create til
+
+- if errors.any?
+  - errors.each do |error|
+    p #{error}
+
+
+form action="/tils" method="post"
+  == csrf_tag
+  p
+    | Title:
+    input name="til[title]" type="text" /
+  p
+    | Last name:
+    textarea cols="40" name="til[text]" rows="5"
+
+  p
+    button type="submit"  Create Til

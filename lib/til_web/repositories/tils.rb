@@ -3,6 +3,14 @@ require 'til_web/repository'
 module TilWeb
   module Repositories
     class Tils < TilWeb::Repository[:tils]
+      def create(attrs)
+        command(:tils)[:create].(attrs)
+      end
+
+      def listing
+        tils
+      end
+
       def [](id)
         tils.by_id(id).one!
       end

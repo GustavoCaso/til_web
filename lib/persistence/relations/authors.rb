@@ -5,6 +5,8 @@ module Persistence
         attribute :id, Types::Serial
         attribute :name, Types::Strict::String
         attribute :email, Types::Strict::String
+        attribute :created_at, Types::Date
+        attribute :updated_at, Types::Date
 
         associations do
           has_many :tils
