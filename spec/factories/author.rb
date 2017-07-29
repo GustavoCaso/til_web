@@ -1,5 +1,6 @@
 Factory.define :author do |f|
   f.name { fake(:name, :first_name) }
   f.email { fake(:internet, :email) }
+  f.password_digest { fake(:crypto, :sha256) }
   f.timestamps
 end
