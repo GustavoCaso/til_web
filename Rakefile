@@ -15,6 +15,24 @@ def db
   TilWeb::Container["persistence.db"]
 end
 
+def settings
+  TilWeb::Container["settings"]
+end
+
+def database_uri
+  require "uri"
+  URI.parse(settings.database_url)
+end
+
+def postgres_env_vars(uri)
+  {}.tap do |vars|
+    vars["PGHOST"] = uri.host
+    vars["PGPORT"] = uri.port if uri.port
+    vars["PGUSER"] = uri.user if uri.user
+    vars["PGPASSWORD"] = uri.password if uri.password
+  end
+end
+
 task :server do
   system('bundle exec shotgun -p 3000 -o 0.0.0.0 config.ru')
 end
@@ -22,6 +40,10 @@ end
 namespace :db do
   task :setup do
     TilWeb::Container.boot :rom
+  end
+
+  task :settings do
+    TilWeb::Container.boot :settings
   end
 
   desc "Prints current schema version"
@@ -34,6 +56,28 @@ namespace :db do
       end
 
     puts "Current schema version: #{version}"
+  end
+
+  desc "Create database"
+  task create: :settings do
+    if system("which createdb", out: File::NULL)
+      uri = database_uri
+      system(postgres_env_vars(uri), "createdb #{Shellwords.escape(uri.path[1..-1])}")
+    else
+      puts "You must have Postgres installed to create a database"
+      exit 1
+    end
+  end
+
+  desc "Drop database"
+  task drop: :settings do
+    if system("which dropdb", out: File::NULL)
+      uri = database_uri
+      system(postgres_env_vars(uri), "dropdb #{Shellwords.escape(uri.path[1..-1])}")
+    else
+      puts "You must have Postgres installed to drop a database"
+      exit 1
+    end
   end
 
   desc "Perform migration up to latest migration available"
@@ -51,7 +95,10 @@ namespace :db do
     desc "Dump database structure to db/structure.sql"
     task :dump do
       if system("which pg_dump", out: File::NULL)
-        system(%(pg_dump -s -x -O #{Shellwords.escape(db.url)} > db/structure.sql))
+        uri = database_uri
+        system(postgres_env_vars(uri), "pg_dump -s -x -O #{Shellwords.escape(uri.path[1..-1])}", out: "db/structure.sql")
+      else
+        puts "You must have pg_dump installed to dump the database structure"
       end
     end
   end
