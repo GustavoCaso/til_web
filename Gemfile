@@ -26,6 +26,7 @@ gem "dry-transaction", ">= 0.10.0"
 gem "dry-types"
 gem "dry-validation"
 gem "dry-view", git: 'https://github.com/dry-rb/dry-view', branch: 'add_default_option_to_expose'
+gem "bcrypt"
 gem "slim"
 
 group :development, :test do
