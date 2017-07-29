@@ -1,0 +1,20 @@
+h1 Create Account
+
+- if errors.any?
+  - errors.each do |error|
+    p.error #{error}
+
+
+form action="/authors" method="post"
+  == csrf_tag
+  p
+    | Name:
+    input name="author[name]" type="text" /
+  p
+    | Email:
+    input name="author[email]" type="text"
+  p 
+    | Password:
+    input name="author[password]" type="password"
+  p
+    button type="submit"  Create Account

@@ -10,13 +10,13 @@ module TilWeb
         include Import['repositories.tils']
 
         def call(attributes)
-          validated_attribtes = Validations::Tils.(attributes)
+          validated_attributes = Validations::Tils.(attributes)
 
-          if validated_attribtes.success?
-            til = tils.create(title: attributes['title'], text: attributes['text'])
+          if validated_attributes.success?
+            til = tils.create(validated_attributes.output)
             Dry::Monads::Right(til)
           else
-            Dry::Monads::Left(validated_attribtes)
+            Dry::Monads::Left(validated_attributes)
           end
         end
       end
