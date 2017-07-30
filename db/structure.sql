@@ -42,7 +42,8 @@ CREATE TABLE authors (
     name text NOT NULL,
     email text NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    password_digest text NOT NULL
 );
 
 
@@ -143,6 +144,13 @@ ALTER TABLE ONLY schema_migrations
 
 ALTER TABLE ONLY tils
     ADD CONSTRAINT tils_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: authors_email_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX authors_email_index ON authors USING btree (email);
 
 
 --
