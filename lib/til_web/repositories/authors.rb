@@ -10,6 +10,10 @@ module TilWeb
       def [](id)
         authors.by_id(id).one!
       end
+
+      def by_email(email)
+        authors.by_email(email).first
+      end
     end
   end
 end

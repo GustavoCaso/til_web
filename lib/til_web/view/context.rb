@@ -3,6 +3,17 @@
 module TilWeb
   module View
     class Context
+
+      class Authorized < Context
+        def current_user
+          self[:current_user]
+        end
+
+        def logged_in?
+          true
+        end
+      end
+
       attr_reader :attrs
 
       def initialize(attrs = {})
@@ -31,6 +42,14 @@ module TilWeb
 
       def with(new_attrs)
         self.class.new(attrs.merge(new_attrs))
+      end
+
+      def logged_in?
+        false
+      end
+
+      def authorized(current_user)
+        Authorized.new(attrs.merge(current_user: current_user))
       end
 
       private

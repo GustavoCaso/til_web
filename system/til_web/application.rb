@@ -1,4 +1,5 @@
 require "dry/web/roda/application"
+require_relative 'roda_plugins'
 require_relative "container"
 
 module TilWeb
@@ -14,7 +15,16 @@ module TilWeb
 
     plugin :csrf, raise: true
     plugin :flash
+    plugin Roda::RodaPlugins::Logged
     plugin :dry_view
+
+    def view_context
+      current_user ? super.authorized(current_user) : super
+    end
+
+    def current_user
+      env['current_user']
+    end
 
     route do |r|
       r.multi_route
