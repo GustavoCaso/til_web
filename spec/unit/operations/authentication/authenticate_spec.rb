@@ -14,7 +14,7 @@ RSpec.describe TilWeb::Operations::Authentication::Authenticate, "#call" do
     end
 
     it 'returns the author' do
-      expect(subject.call(author.email, password).value.to_hash).to eq(author.to_hash)
+      expect(subject.call(author.email, password).value.id).to eq(author.id)
     end
   end
 
