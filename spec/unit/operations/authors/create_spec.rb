@@ -32,5 +32,4 @@ RSpec.describe TilWeb::Operations::Authors::Create, "#call" do
       expect(subject.call(attributes)).to be_a Dry::Monads::Either::Left
     end
   end
-
 end
