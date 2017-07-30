@@ -1,0 +1,16 @@
+h1 Login
+
+- if flash[:error]
+  p.error #{flash[:error]}
+
+
+form action="/login" method="post"
+  == csrf_tag
+  p
+    | Email:
+    input name="login[email]" type="text" /
+  p
+    | Password:
+    input name="login[password]" type="password"
+  p
+    button type="submit"  Login

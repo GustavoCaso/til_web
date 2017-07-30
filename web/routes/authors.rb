@@ -6,6 +6,7 @@ class TilWeb::Application
           create_til.(r[:author]) do |m|
             m.success do
               flash[:success] = "Your account has been created successfully"
+              session[:author_id] = author.id
               r.redirect "tils"
             end
 

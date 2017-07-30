@@ -9,7 +9,7 @@ module TilWeb
 
       required(:email).filled(:str?, format?: EMAIL_REGEX_VALIDATION)
 
-      required(:password).filled(:str?)
+      required(:password).filled(:str?, min_size?: 8)
     end
   end
 end
