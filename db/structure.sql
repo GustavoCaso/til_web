@@ -34,6 +34,38 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: accounts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE accounts (
+    id integer NOT NULL,
+    author_id integer NOT NULL,
+    avatar_data text,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE accounts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
+
+
+--
 -- Name: authors; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -112,6 +144,13 @@ ALTER SEQUENCE tils_id_seq OWNED BY tils.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY accounts ALTER COLUMN id SET DEFAULT nextval('accounts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::regclass);
 
 
@@ -120,6 +159,14 @@ ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::r
 --
 
 ALTER TABLE ONLY tils ALTER COLUMN id SET DEFAULT nextval('tils_id_seq'::regclass);
+
+
+--
+-- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY accounts
+    ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
 
 
 --
@@ -147,6 +194,13 @@ ALTER TABLE ONLY tils
 
 
 --
+-- Name: accounts_author_id_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX accounts_author_id_index ON accounts USING btree (author_id);
+
+
+--
 -- Name: authors_email_index; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -165,6 +219,14 @@ CREATE INDEX authors_name_index ON authors USING btree (name);
 --
 
 CREATE INDEX tils_author_id_index ON tils USING btree (author_id);
+
+
+--
+-- Name: accounts_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY accounts
+    ADD CONSTRAINT accounts_author_id_fkey FOREIGN KEY (author_id) REFERENCES authors(id);
 
 
 --
