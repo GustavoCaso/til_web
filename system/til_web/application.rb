@@ -11,10 +11,14 @@ module TilWeb
 
     opts[:root] = Pathname(__FILE__).join("../..").realpath.dirname
 
+    use Rack::MethodOverride
     use Rack::Session::Cookie, key: "til_web.session", secret: self["settings"].session_secret
 
+    plugin :public
+    plugin :assets, css: 'til_web.css'
     plugin :csrf, raise: true
     plugin :flash
+    plugin :all_verbs
     plugin Roda::RodaPlugins::Logged
     plugin :dry_view
 
@@ -27,6 +31,8 @@ module TilWeb
     end
 
     route do |r|
+      r.public
+      r.assets
       r.multi_route
 
       r.root do
