@@ -6,6 +6,7 @@ module Persistence
         attribute :name, Types::Strict::String
         attribute :email, Types::Strict::String
         attribute :password_digest, Types::Strict::String
+        attribute :avatar_data, Types::Strict::String.optional
         attribute :created_at, Types::Date
         attribute :updated_at, Types::Date
 

@@ -1,6 +1,6 @@
 require 'til_web/operation'
 require 'til_web/import'
-require 'til_web/validations/authors'
+require 'til_web/validations/authors/create'
 require 'dry/monads'
 
 module TilWeb
@@ -14,7 +14,7 @@ module TilWeb
         ]
 
         def call(attributes)
-          attr = Validations::Authors.call(attributes)
+          attr = Validations::Authors::Create.call(attributes)
 
           if attr.success?
             author = authors.create(prepare_attributes(attr.output))
