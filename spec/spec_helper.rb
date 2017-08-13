@@ -14,6 +14,10 @@ SPEC_ROOT = Pathname(__FILE__).dirname
 Dir[SPEC_ROOT.join("support/*.rb").to_s].each(&method(:require))
 Dir[SPEC_ROOT.join("shared/*.rb").to_s].each(&method(:require))
 
+def fixture_path(file_name)
+  SPEC_ROOT.join("fixtures/#{file_name}")
+end
+
 require SPEC_ROOT.join("../system/til_web/container")
 
 RSpec.configure do |config|
