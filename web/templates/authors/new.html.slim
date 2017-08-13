@@ -9,12 +9,12 @@ form action="/authors" method="post"
   == csrf_tag
   p
     | Name:
-    input name="author[name]" type="text" /
+    input#name name="author[name]" type="text" /
   p
     | Email:
-    input name="author[email]" type="text"
-  p 
+    input#email name="author[email]" type="text"
+  p
     | Password:
-    input name="author[password]" type="password"
+    input#password name="author[password]" type="password"
   p
     button type="submit"  Create Account

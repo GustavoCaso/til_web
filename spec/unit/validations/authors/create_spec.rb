@@ -1,9 +1,9 @@
 require 'db_spec_helper'
-require 'til_web/validations/authors'
+require 'til_web/validations/authors/create'
 
-RSpec.describe 'TilWeb::Validations::Authors' "#call" do
+RSpec.describe 'TilWeb::Validations::Authors::Create', "#call" do
   subject do
-    TilWeb::Validations::Authors.call(attributes)
+    TilWeb::Validations::Authors::Create.call(attributes)
   end
 
   context 'valid attributes' do

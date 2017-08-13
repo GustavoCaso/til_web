@@ -28,6 +28,9 @@ gem "dry-validation"
 gem "dry-view", git: 'https://github.com/dry-rb/dry-view', branch: 'add_default_option_to_expose'
 gem "bcrypt"
 gem "slim"
+gem "shrine"
+gem "image_processing"
+gem "mini_magick", ">= 4.3.5"
 
 group :development, :test do
   gem "pry-byebug", platform: :mri
@@ -42,4 +45,5 @@ group :test do
   gem "rom-factory"
   gem 'simplecov'
   gem "codeclimate-test-reporter"
+  gem "shrine-memory"
 end

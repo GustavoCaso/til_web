@@ -1,4 +1,5 @@
 # auto_register: false
+require 'til_web/decorators/author'
 
 module TilWeb
   module View
@@ -6,7 +7,7 @@ module TilWeb
 
       class Authorized < Context
         def current_user
-          self[:current_user]
+          TilWeb::Decorators::Author.new(self[:current_user])
         end
 
         def logged_in?

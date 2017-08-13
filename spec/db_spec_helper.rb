@@ -1,7 +1,9 @@
 require_relative "spec_helper"
 
 TilWeb::Container.boot! :rom
+TilWeb::Container.boot! :shrine
 
+Dir[SPEC_ROOT.join("support/uploads/*.rb").to_s].each(&method(:require))
 Dir[SPEC_ROOT.join("support/db/*.rb").to_s].each(&method(:require))
 Dir[SPEC_ROOT.join("shared/db/*.rb").to_s].each(&method(:require))
 

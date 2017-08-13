@@ -1,0 +1,20 @@
+h1 Edit Account
+
+- if errors.any?
+  - errors.each do |error|
+    p.error #{error}
+
+form action="/authors/#{author.id}" method="post" enctype="multipart/form-data"
+  == csrf_tag
+  input type="hidden" name="_method" value="PUT"
+  p
+    | Name:
+    input#name name="author[name]" type="text" /
+  p
+    | Email:
+    input#email name="author[email]" type="text" /
+  p
+    | Avatar:
+    input#avatar name="author[avatar]" type="file" /
+  p
+    button type="submit"  Update

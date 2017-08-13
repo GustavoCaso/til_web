@@ -10,3 +10,8 @@
 
 # Temp files
 tmp/*
+
+#uploads
+public/uploads
+
+.bundle
