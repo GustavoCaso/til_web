@@ -8,9 +8,9 @@ form action="/login" method="post"
   == csrf_tag
   p
     | Email:
-    input name="login[email]" type="text" /
+    input#email name="login[email]" type="text" /
   p
     | Password:
-    input name="login[password]" type="password"
+    input#password name="login[password]" type="password"
   p
     button type="submit"  Login
