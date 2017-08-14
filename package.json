@@ -1,0 +1,23 @@
+{
+  "name": "til_web",
+  "version": "1.0.0",
+  "description": "Today I learnt website with dry-web-roda stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GustavoCaso/til_web.git"
+  },
+  "author": "GustavoCaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoCaso/til_web/issues"
+  },
+  "homepage": "https://github.com/GustavoCaso/til_web#readme",
+  "devDependencies": {
+    "webpack": "^3.5.4"
+  }
+}

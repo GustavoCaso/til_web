@@ -13,5 +13,6 @@ tmp/*
 
 #uploads
 public/uploads
+public/assets
 
 .bundle
