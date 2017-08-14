@@ -23,7 +23,10 @@ class TilWeb::Application
     end
 
     r.logged do
-      r.on ':id' do |id|
+      r.on Integer do |id|
+        # avoid ivalid user accessing information
+        r.redirect '/' if current_user.id != id
+
         r.is do
           r.get do
             r.view 'authors.show', id: id
