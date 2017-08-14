@@ -11,7 +11,10 @@ class Roda
                 current_user!(user)
               end
 
-              m.failure {}
+              m.failure do
+                scope.flash[:alert] = 'You need to be logged in to access that resource'
+                redirect '/'
+              end
 
               yield
             end
