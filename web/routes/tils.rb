@@ -1,5 +1,9 @@
 class TilWeb::Application
   route 'tils' do |r|
+    r.on Integer do |id|
+      r.view 'tils.show', id: id
+    end
+
     r.is do
       r.get do
         r.view 'tils.index'
@@ -8,9 +12,9 @@ class TilWeb::Application
       r.logged do
         r.post do
           r.resolve 'operations.tils.create' do |create_til|
-            create_til.(r[:til]) do |m|
+            create_til.call(r[:til]) do |m|
               m.success do
-                r.redirect "tils"
+                r.redirect 'tils'
               end
 
               m.failure do |validation|
@@ -26,10 +30,6 @@ class TilWeb::Application
       r.on 'new' do
         r.view 'tils.new'
       end
-    end
-
-    r.on ':id' do |id|
-      r.view 'tils.show', id: id
     end
   end
 end

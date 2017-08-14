@@ -16,4 +16,10 @@ RSpec.feature 'Show page' do
     expect(page).to have_selector 'h1', text: 'Profile'
     expect(page).to have_selector 'img.img-circle.profile-picture'
   end
+
+  scenario 'Viewing Author Edit with id not matching with current_user' do
+    visit "/authors/132456"
+
+    expect(current_path).to eq '/'
+  end
 end
