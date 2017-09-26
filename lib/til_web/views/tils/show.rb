@@ -12,9 +12,7 @@ module TilWeb
           config.template = "tils/show"
         end
 
-        private_expose :id
-
-        expose :til do |id|
+        expose :til do |id:|
           tils[id]
         end
       end

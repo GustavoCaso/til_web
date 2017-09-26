@@ -9,7 +9,9 @@ module TilWeb
           config.template = 'authors/new'
         end
 
-        expose :errors, default: []
+        expose :errors do |errors: []|
+          errors
+        end
       end
     end
   end

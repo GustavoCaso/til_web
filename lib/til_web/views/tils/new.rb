@@ -8,7 +8,9 @@ module TilWeb
           config.template = "tils/new"
         end
 
-        expose :errors, default: []
+        expose :errors do |errors: []|
+          errors
+        end
       end
     end
   end

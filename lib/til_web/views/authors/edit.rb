@@ -12,13 +12,13 @@ module TilWeb
           config.template = "authors/edit"
         end
 
-        private_expose :id
-
-        expose :author do |id|
+        expose :author do |id:|
           authors[id]
         end
 
-        expose :errors, default: []
+        expose :errors do |errors: []|
+          errors
+        end
       end
     end
   end

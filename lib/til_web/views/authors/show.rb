@@ -13,9 +13,7 @@ module TilWeb
           config.template = "authors/show"
         end
 
-        private_expose :id
-
-        expose :author do |id|
+        expose :author do |id:|
           TilWeb::Decorators::Author.new(authors[id])
         end
       end

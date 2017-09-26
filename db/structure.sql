@@ -2,12 +2,11 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -111,21 +110,21 @@ ALTER SEQUENCE tils_id_seq OWNED BY tils.id;
 
 
 --
--- Name: authors id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::regclass);
 
 
 --
--- Name: tils id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tils ALTER COLUMN id SET DEFAULT nextval('tils_id_seq'::regclass);
 
 
 --
--- Name: authors authors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: authors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY authors
@@ -133,7 +132,7 @@ ALTER TABLE ONLY authors
 
 
 --
--- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY schema_migrations
@@ -141,7 +140,7 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
--- Name: tils tils_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tils_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tils
@@ -170,7 +169,7 @@ CREATE INDEX tils_author_id_index ON tils USING btree (author_id);
 
 
 --
--- Name: tils tils_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: tils_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tils
